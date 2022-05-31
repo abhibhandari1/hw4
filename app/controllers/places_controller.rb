@@ -6,7 +6,12 @@ class PlacesController < ApplicationController
 
   def show
     @place = Place.find_by({ "id" => params["id"] })
-    @posts = Post.where({ "place_id" => @place["id"] })
+    if @current_user
+       @posts = Post.where({ "place_id" => @place["id"] })
+    else
+      flash["notice"] = "Login to view your posts"
+      redirect_to "/sessions/new"
+    end
   end
 
   def new
