@@ -2,6 +2,10 @@
 
 <h2>My Posts</h2>
 
+<p>
+  <a href="/posts/new?place_id=<%= @place["id"]%>" class="btn btn-warning" >New Post</a>
+</p>
+
 <% @posts = Post.where({"user_id" => session["user_id"]}) %>
 <% if @posts %>
   <% for post in @posts %>
@@ -13,10 +17,6 @@
   <p> You don't have any posts for this place</p -->
 <% end %>
 
-
-<p>
-  <a href="/posts/new?place_id=<%= @place["id"]%>" class="btn btn-warning" >New Post</a>
-</p>
 
 <p>
   <a href="/places" class="btn btn-info"  >Back to All Places</a>
