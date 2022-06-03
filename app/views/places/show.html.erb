@@ -6,17 +6,22 @@
   <a href="/posts/new?place_id=<%= @place["id"]%>" class="btn btn-warning" >New Post</a>
 </p>
 
-<% @posts = Post.where({"user_id" => session["user_id"]}) %>
-<% if @posts %>
-  <% for post in @posts %>
-    <h3><%= post["title"] %></h3>
-    <h4><%= post["posted_on"] %></h4>
-    <p><%= post["description"] %></p>
-  <% end %>
-<!--% else %>
-  <p> You don't have any posts for this place</p -->
-<% end %>
-
+<div class = "container">
+  <div class = "row">
+     <% @posts = Post.where({"user_id" => session["user_id"]}) %>
+      <% if @posts %>
+        <% for post in @posts %>
+          <div class="col-md-3 col-sm-6">
+          <h3><%= post["title"] %></h3>
+          <h4><%= post["posted_on"] %></h4>
+          <p><%= post["description"] %></p>
+        <% end %>
+      <!--% else %>
+        <p> You don't have any posts for this place</p -->
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <p>
   <a href="/places" class="btn btn-info"  >Back to All Places</a>
