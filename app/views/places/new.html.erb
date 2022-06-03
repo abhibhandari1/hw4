@@ -3,11 +3,11 @@
 <% if @current_user%>
   <%= form_with :model => @place do |form| %>
     <p>
-      <%= form.label "name" %>
-      <%= form.text_field "name" %>
+      <%= form.label "name", :class => "form-label" %>
+      <%= form.text_field "name", :class => "form-control" %>
     </p>
     <p>
-      <%= form.submit %>
+      <%= form.submit "Create Place", :class => "btn btn-primary" %>
     </p>
   <% end %>
 <% else %>
