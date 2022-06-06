@@ -1,23 +1,16 @@
 <div class = "container m-3">
-  <div class = "container m-3">
-    <h1> <%= @place["name"] %> </h1>
-  </div>
+  <h1> <%= @place["name"] %> </h1>
+</div>
 
-  <div class = "container m-3">
-    <h2> My Posts </h2>
-  </div>
-
-   <div class = "container m-3">
-    <a href="/posts/new?place_id=<%= @place["id"]%>" class="btn btn-warning" >New Post</a>
-  </div>
-
+ 
 
   <div class = "container m-3">
     <div class = "row g-5">
-          <% @posts = Post.where({"user_id" => session["user_id"]}, {"place_id" => @place["id"]}) %>
-            <% if @posts %>
+          <% @posts = Post.where({"user_id" => session["user_id"], "place_id" => @place["id"]}) %>
+            <% if @posts.any? %>
+              <h2> My Posts </h2>
               <% for post in @posts %>
-                <div class = "col-md-4 col-sm-6">
+                <div class = "col-md-4 col-sm-6">                  
                   <h2> <%= post["title"] %> </h2>
                   <p class="fw-semibold"> <%= post["posted_on"] %> </p>
                     <%if post.uploaded_image.attached?%>
@@ -27,11 +20,16 @@
                     <% end %>                        
                     <p class="fst-normal fs-5"> <%= post["description"] %> </p>
                 </div>
+              <% end %>
+            <% else %>
+              <p> You don't have any posts for this place </p>
             <% end %>
-          <!--% else %>
-            <p> You don't have any posts for this place</p -->
-          <% end %>
     </div>
+  </div>
+
+  
+   <div class = "container m-3">
+    <a href="/posts/new?place_id=<%= @place["id"]%>" class="btn btn-warning" >New Post</a>
   </div>
 
   <div class = "container m-3">
