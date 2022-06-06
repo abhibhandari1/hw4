@@ -1,33 +1,41 @@
-<h1><%= @place["name"] %></h1>
-
-<h2>My Posts</h2>
-
-<p>
-  <a href="/posts/new?place_id=<%= @place["id"]%>" class="btn btn-warning" >New Post</a>
-</p>
-
-<div class = "container">
-  <div class = "row g-5">
-        <% @posts = Post.where({"user_id" => session["user_id"]}) %>
-          <% if @posts %>
-            <% for post in @posts %>
-              <div class = "col-md-4 col-sm-6">
-                <h2> <%= post["title"] %> </h2>
-                <p class="fw-semibold"> <%= post["posted_on"] %> </p>
-                  <%if post.uploaded_image.attached?%>
-                    <img src= "<%= url_for(post.uploaded_image)%>" class="img-fluid">
-                  <% else %>
-                    <img src="<%= post["uploaded_image"] %>" class="img-fluid" >
-                  <% end %>                        
-                  <p class="fst-normal fs-5"> <%= post["description"] %> </p>
-              </div>
-          <% end %>
-        <!--% else %>
-          <p> You don't have any posts for this place</p -->
-        <% end %>
+<div class = "container m-3">
+  <div class = "container m-3">
+    <h1> <%= @place["name"] %> </h1>
   </div>
-</div>
 
-<p>
-  <a href="/places" class="btn btn-info"  >Back to All Places</a>
-</p>
+  <div class = "container m-3">
+    <h2> My Posts </h2>
+  </div>
+
+   <div class = "container m-3">
+    <a href="/posts/new?place_id=<%= @place["id"]%>" class="btn btn-warning" >New Post</a>
+  </div>
+
+
+  <div class = "container m-3">
+    <div class = "row g-5">
+          <% @posts = Post.where({"user_id" => session["user_id"]}) %>
+            <% if @posts %>
+              <% for post in @posts %>
+                <div class = "col-md-4 col-sm-6">
+                  <h2> <%= post["title"] %> </h2>
+                  <p class="fw-semibold"> <%= post["posted_on"] %> </p>
+                    <%if post.uploaded_image.attached?%>
+                      <img src= "<%= url_for(post.uploaded_image)%>" class="img-fluid">
+                    <% else %>
+                      <img src="<%= post["uploaded_image"] %>" class="img-fluid" >
+                    <% end %>                        
+                    <p class="fst-normal fs-5"> <%= post["description"] %> </p>
+                </div>
+            <% end %>
+          <!--% else %>
+            <p> You don't have any posts for this place</p -->
+          <% end %>
+    </div>
+  </div>
+
+  <div class = "container m-3">
+    <a href="/places" class="btn btn-info"  >Back to All Places</a>
+  </div>
+
+</div>
