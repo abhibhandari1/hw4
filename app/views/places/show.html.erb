@@ -7,19 +7,19 @@
 </p>
 
 <div class = "container">
-  <div class = "row">
+  <div class = "row g-5">
         <% @posts = Post.where({"user_id" => session["user_id"]}) %>
           <% if @posts %>
             <% for post in @posts %>
             <div class = "col-md-4">
               <h2> <%= post["title"] %> </h2>
-              <h4> <%= post["posted_on"] %> </h4>
+              <p class="fw-semibold"> <%= post["posted_on"] %> </p>
                 <%if post.uploaded_image.attached?%>
                   <img src= "<%= url_for(post.uploaded_image)%>" class="img-fluid">
                 <% else %>
                   <img src="<%= post["uploaded_image"] %>" class="img-fluid" >
                 <% end %>                        
-                <h4> <%= post["description"] %> </h4>
+                <p class="fst-normal fs-5"> <%= post["description"] %> </p>
             </div>
           <% end %>
         <!--% else %>
