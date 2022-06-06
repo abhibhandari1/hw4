@@ -11,16 +11,16 @@
         <% @posts = Post.where({"user_id" => session["user_id"]}) %>
           <% if @posts %>
             <% for post in @posts %>
-            <div class = "col-md-4">
-              <h2> <%= post["title"] %> </h2>
-              <p class="fw-semibold"> <%= post["posted_on"] %> </p>
-                <%if post.uploaded_image.attached?%>
-                  <img src= "<%= url_for(post.uploaded_image)%>" class="img-fluid">
-                <% else %>
-                  <img src="<%= post["uploaded_image"] %>" class="img-fluid" >
-                <% end %>                        
-                <p class="fst-normal fs-5"> <%= post["description"] %> </p>
-            </div>
+              <div class = "col-md-4 col-sm-6">
+                <h2> <%= post["title"] %> </h2>
+                <p class="fw-semibold"> <%= post["posted_on"] %> </p>
+                  <%if post.uploaded_image.attached?%>
+                    <img src= "<%= url_for(post.uploaded_image)%>" class="img-fluid">
+                  <% else %>
+                    <img src="<%= post["uploaded_image"] %>" class="img-fluid" >
+                  <% end %>                        
+                  <p class="fst-normal fs-5"> <%= post["description"] %> </p>
+              </div>
           <% end %>
         <!--% else %>
           <p> You don't have any posts for this place</p -->
