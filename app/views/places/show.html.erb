@@ -14,7 +14,7 @@
 
   <div class = "container m-3">
     <div class = "row g-5">
-          <% @posts = Post.where({"user_id" => session["user_id"]}, {"place_id" => @place["id"]} ) %>
+          <% @posts = Post.where({"user_id" => session["user_id"]}, {"place_id" => @place["id"]}) %>
             <% if @posts %>
               <% for post in @posts %>
                 <div class = "col-md-4 col-sm-6">
